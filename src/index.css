@@ -1,0 +1,438 @@
+/* ##############################################################
+   ##################### CSS VARIABLES #########################
+   ############################################################## */
+   :root {
+    /* Color Palette */
+    --green: #1DB954; /* Spotify Green */
+    --green-hover: #1ed760;
+    --green-active: #1aa34a;
+    --grey: #656565;
+    --light-text: #ffffff;
+    --dark-background: #121212;
+    --medium-dark-background: #282828;
+    --light-grey: #b3b3b3;
+    --error-red: #ff4d4f;
+    --button-hover-bg: #1ed760;
+    --button-active-bg: #1aa34a;
+  
+    /* Font Sizes */
+    --font-size-small: 14px;
+    --font-size-medium: 16px;
+    --font-size-large: 18px;
+    --font-size-xl: 24px;
+    --font-size-xxl: 32px;
+    --font-size-3xl: 64px;
+  
+    /* Spacing */
+    --spacing-small: 8px;
+    --spacing-medium: 16px;
+    --spacing-large: 24px;
+    --spacing-xlarge: 32px;
+  
+    /* Border Radius */
+    --border-radius-small: 8px;
+    --border-radius-medium: 12px;
+    --border-radius-large: 25px;
+  
+    /* Transition */
+    --transition-speed: 0.3s;
+  }
+  
+  /* ##############################################################
+     ##################### GLOBAL STYLES ##########################
+     ############################################################## */
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--dark-background);
+    color: var(--light-text);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* ##############################################################
+     ##################### BUTTONS ###############################
+     ############################################################## */
+  
+  /* General Button Styles */
+  button {
+    font-family: inherit;
+    font-weight: bold;
+    font-size: var(--font-size-medium);
+    color: var(--light-text);
+    background-color: var(--green);
+    border: none;
+    border-radius: var(--border-radius-large);
+    padding: var(--spacing-medium) var(--spacing-large);
+    cursor: pointer;
+    transition: background-color var(--transition-speed), transform 0.2s ease;
+  }
+  
+  button:hover {
+    background-color: var(--green-hover);
+    transform: translateY(-2px);
+  }
+  
+  button:active {
+    background-color: var(--green-active);
+    transform: translateY(0);
+  }
+  
+  button:disabled {
+    background-color: #4e4e4e;
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+  
+  /* Specific Button Modifiers */
+  .login-button,
+  .logout-button,
+  .search-button,
+  .play-button,
+  .upgrade-button {
+    /* Inherits general button styles */
+  }
+  
+  /* Upgrade Button Specific Styles */
+  .upgrade-button {
+    background-color: #ffffff;
+    color: var(--green);
+  }
+  
+  .upgrade-button:hover {
+    background-color: #e6e6e6;
+  }
+  
+  /* Play Button Specific Styles */
+  .play-button {
+    background: none;
+    color: var(--green);
+    font-size: var(--font-size-large);
+    padding: 0;
+  }
+  
+  .play-button.playing {
+    color: var(--green-hover);
+  }
+  
+  /* ##############################################################
+     ##################### FORMS ###############################
+     ############################################################## */
+  
+  /* Search Form Container */
+  .search-form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-medium);
+    margin: var(--spacing-large) 0;
+  }
+  
+  /* Form Group for Inputs */
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    min-width: 200px;
+    width: 100%;
+  }
+  
+  /* Input Fields */
+  .search-input,
+  .time-input,
+  .activity-select {
+    padding: var(--spacing-small) var(--spacing-medium);
+    border-radius: var(--border-radius-large);
+    border: 1px solid var(--grey);
+    font-size: var(--font-size-medium);
+    background-color: var(--medium-dark-background);
+    color: var(--light-text);
+    transition: border var(--transition-speed), box-shadow var(--transition-speed);
+  }
+  
+  .search-input::placeholder,
+  .time-input::placeholder,
+  .activity-select::placeholder {
+    color: var(--light-grey);
+  }
+  
+  .search-input:focus,
+  .time-input:focus,
+  .activity-select:focus {
+    border-color: var(--green);
+    box-shadow: 0 0 5px rgba(29, 185, 84, 0.5);
+    outline: none;
+  }
+  
+  /* Select Dropdown Specific Styles */
+  .activity-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='7'%3E%3Cpath fill='%23B3B3B3' d='M0 0l5 7 5-7z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right var(--spacing-small) center;
+    background-size: var(--spacing-small) var(--spacing-small);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 600px) {
+    .search-form {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  
+    .search-button,
+    .upgrade-button {
+      width: 100%;
+    }
+  
+    .seek-slider,
+    .volume-slider {
+      width: 100px;
+    }
+  }
+  
+  /* ##############################################################
+     ##################### PLAYLIST ###############################
+     ############################################################## */
+  
+  /* Playlist Container */
+  #playlist {
+    width: 80%;
+    margin: var(--spacing-large) auto;
+  }
+  
+  /* Song Row */
+  .song-row {
+    display: flex;
+    align-items: center;
+    background-color: var(--medium-dark-background);
+    padding: var(--spacing-small) var(--spacing-medium);
+    margin-bottom: var(--spacing-small);
+    border-radius: var(--border-radius-small);
+    transition: background-color var(--transition-speed);
+  }
+  
+  .song-row:hover {
+    background-color: #3b3b3b;
+  }
+  
+  /* Artist Banner */
+  .artist-banner {
+    width: 80px;
+    height: 80px;
+    margin-right: var(--spacing-medium);
+    flex-shrink: 0;
+  }
+  
+  .artist-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--border-radius-small);
+  }
+  
+  /* Song Details */
+  .song-details {
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+  
+  .song-number-element {
+    width: 30px;
+    text-align: center;
+    font-size: var(--font-size-medium);
+    color: var(--grey);
+  }
+  
+  .description-element {
+    flex: 1;
+    text-align: left;
+    margin-left: var(--spacing-small);
+  }
+  
+  .song-title {
+    font-size: var(--font-size-large);
+    font-weight: bold;
+    color: var(--light-text);
+  }
+  
+  .song-artist {
+    font-size: var(--font-size-small);
+    color: var(--light-grey);
+  }
+  
+  /* Duration Element */
+  .duration-element {
+    width: 80px;
+    text-align: center;
+    font-size: var(--font-size-medium);
+    color: var(--light-grey);
+  }
+  
+  /* Play Full Button */
+  .play-full-button-element {
+    width: 60px;
+    text-align: center;
+  }
+  
+  .play-button {
+    font-size: var(--font-size-large);
+    color: var(--green);
+    transition: color var(--transition-speed);
+  }
+  
+  .play-button.playing {
+    color: var(--green-hover);
+  }
+  
+  .play-button:disabled {
+    color: var(--grey);
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+  
+  /* ##############################################################
+     ##################### PLAYBACK CONTROLS ######################
+     ############################################################## */
+  
+  /* Playback Controls Container */
+  .playback-controls {
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-medium);
+    margin-top: var(--spacing-large);
+    padding: var(--spacing-medium);
+    background-color: var(--medium-dark-background);
+    border-radius: var(--border-radius-small);
+  }
+  
+  /* Control Buttons */
+  .control-button {
+    background: none;
+    border: none;
+    color: var(--green);
+    font-size: var(--font-size-large);
+    cursor: pointer;
+    transition: color var(--transition-speed);
+  }
+  
+  .control-button:hover {
+    color: var(--green-hover);
+  }
+  
+  .control-button:disabled {
+    color: var(--grey);
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+  
+  /* Seek Bar and Volume Control */
+  .seek-bar,
+  .volume-control {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-small);
+  }
+  
+  .seek-slider,
+  .volume-slider {
+    width: 150px;
+    border-radius: var(--border-radius-small);
+    cursor: pointer;
+  }
+  
+  .seek-slider {
+    accent-color: var(--green);
+  }
+  
+  .volume-slider {
+    accent-color: var(--green);
+  }
+  
+  /* Time Labels */
+  .seek-bar span,
+  .volume-control span {
+    font-size: var(--font-size-small);
+    color: var(--light-grey);
+  }
+  
+  /* ##############################################################
+     ##################### MESSAGES ###############################
+     ############################################################## */
+  
+  /* Error Message */
+  .error-message {
+    color: var(--error-red);
+    font-weight: bold;
+    margin-top: var(--spacing-small);
+  }
+  
+  /* Player Status */
+  .player-status {
+    margin-top: var(--spacing-small);
+    font-style: italic;
+    color: var(--green);
+  }
+  
+  /* Premium Banner */
+  .premium-banner {
+    background-color: var(--green);
+    color: var(--light-text);
+    padding: var(--spacing-medium);
+    border-radius: var(--border-radius-small);
+    margin: var(--spacing-large) auto;
+    width: 80%;
+    text-align: center;
+    transition: background-color var(--transition-speed);
+  }
+  
+  .premium-banner:hover {
+    background-color: var(--green-hover);
+  }
+  
+  .premium-banner p {
+    margin: 0 0 var(--spacing-small) 0;
+    font-size: var(--font-size-medium);
+  }
+  
+  .upgrade-button {
+    padding: var(--spacing-small) var(--spacing-medium);
+    background-color: #ffffff;
+    color: var(--green);
+    border-radius: var(--border-radius-large);
+    cursor: pointer;
+    font-size: var(--font-size-medium);
+    transition: background-color var(--transition-speed);
+  }
+  
+  .upgrade-button:hover {
+    background-color: #e6e6e6;
+  }
+  
+  .upgrade-button:disabled {
+    background-color: #cccccc;
+    color: var(--grey);
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+  
+  /* ##############################################################
+     ##################### RESPONSIVE MEDIA #######################
+     ############################################################## */
+  
+  /* Media Queries handled above for max-width: 600px */
+  
+  /* ##############################################################
+     ##################### ADDITIONAL STYLES #######################
+     ############################################################## */
+  
+  /* Additional styling can be added here as needed */
