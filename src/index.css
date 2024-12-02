@@ -1,0 +1,160 @@
+/*
+ ######   ######## ##    ## ######## ########     ###    ##       
+##    ##  ##       ###   ## ##       ##     ##   ## ##   ##       
+##        ##       ####  ## ##       ##     ##  ##   ##  ##       
+##   #### ######   ## ## ## ######   ########  ##     ## ##       
+##    ##  ##       ##  #### ##       ##   ##   ######### ##       
+##    ##  ##       ##   ### ##       ##    ##  ##     ## ##       
+ ######   ######## ##    ## ######## ##     ## ##     ## ######## 
+*/
+
+:root {
+  --green: #00EE67;
+  --grey: #656565;
+}
+
+body {
+  margin: 0;
+  font-family: 'Montserrat';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/*
+ ######   #######  ##     ## ########   #######  ##    ## ######## ##    ## ########  ######  
+##    ## ##     ## ###   ### ##     ## ##     ## ###   ## ##       ###   ##    ##    ##    ## 
+##       ##     ## #### #### ##     ## ##     ## ####  ## ##       ####  ##    ##    ##       
+##       ##     ## ## ### ## ########  ##     ## ## ## ## ######   ## ## ##    ##     ######  
+##       ##     ## ##     ## ##        ##     ## ##  #### ##       ##  ####    ##          ## 
+##    ## ##     ## ##     ## ##        ##     ## ##   ### ##       ##   ###    ##    ##    ## 
+ ######   #######  ##     ## ##         #######  ##    ## ######## ##    ##    ##     ######  
+*/
+
+button {
+  font-family: inherit;
+  font-weight: bold;
+  color: var(--grey);
+  font-size: 64px;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+button:hover {
+  text-decoration: underline;
+  color: var(--green);
+  transition: 0.2s ease;
+  cursor: pointer;
+}
+
+select {
+  width: 100%;
+  padding: 12px;
+  resize: vertical;
+  font-size: 24px;
+  font-family: Montserrat;
+  font-weight: bold;
+  
+  color: var(--grey);
+  width: 200px;
+  height: 72px;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 5px var(--green);
+}
+
+#playlist {
+  width: 800px;
+  margin: 24px 0px;
+}
+
+.song-row {
+  font-weight: bold;
+  width: 100%;
+  padding: 10px 32px;
+  display: flex;
+  align-items: center;
+}
+
+.song-row > .song-number-element {
+  font-size: 16px;
+  width: 50px;
+  text-align: left;
+  margin-right: 50;
+}
+
+.song-row > .description-element {
+  display: inline-block;
+}
+
+.song-row > .description-element > .song-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: black;
+}
+
+.song-row > .description-element > .song-artist {
+  float: left;
+  font-size: 16px;
+  color: var(--grey);
+}
+
+.song-row > .duration-element {
+  margin-left: auto;
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--grey);
+}
+
+
+.dropdown {
+  position: relative;
+  color: var(--grey);
+  font-size: 64px;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  margin-left: 0;
+}
+
+.dropdown:hover {
+  text-decoration: underline;
+  color: var(--green);
+  transition: 0.2s ease;
+  cursor: pointer;
+}
+
+.menu {
+  position: absolute;
+  list-style: none;
+  border: 0px 1px 1px 1px solid #ccc;
+  max-height: 0; 
+  overflow: hidden; 
+  opacity: 0; 
+  transition: opacity 0.6s ease;
+}
+
+.menu.open {
+  max-height: 500px; 
+  opacity: 1; 
+  margin: 0;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+
+.menu li {
+  font-size: 56px;
+  color: var(--grey);
+  text-align: center;
+  
+}
+
+.menu li:hover {
+  text-decoration: underline;
+  color: var(--green);
+  transition: 0.2s ease;
+  cursor: pointer;
+}

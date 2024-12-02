@@ -1,0 +1,11 @@
+
+/node_modules
+*.pack
+*.old
+
+
+# Dependencies
+node_modules/
+
+# ESLint cache file
+.eslintcache
