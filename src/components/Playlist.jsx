@@ -1,4 +1,3 @@
-// 2 src/components/Playlist.js
 import Song from './Song';
 
 function Playlist({ songData, onPlay, currentTrack, isPremium, playerReady }) {
@@ -24,3 +23,4 @@ function Playlist({ songData, onPlay, currentTrack, isPremium, playerReady }) {
 }
 
 export default Playlist;
+
